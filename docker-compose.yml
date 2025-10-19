@@ -10,11 +10,11 @@ services:
       - DATABASE_URL
     ports: 
     # Map system port to container port (must be 5432 for postgres) 
-      - 5432:5432
+      - "5432:5432"
     volumes:
-    # Gives access
-      - db_data:/var/lib/postgresql/data
-      - ./schema.sql:/docket-entrypoint-initdb.d/schema.sql
+    # Run the SQL scripts on startup
+      - ./src/db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./src/db/seed.sql:/docker-entrypoint-initdb.d/seed.sql
 
   backend:
     build: .
@@ -25,10 +25,7 @@ services:
     environment:
       - DATABASE_URL
     ports:
-      - 8000:8000
+      - "8000:8000"
     volumes:
     # Give access of current working directory to work directory
       - ./:/app
-
-volumes:
-  db_data:
