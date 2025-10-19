@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgres:16
+    container_name: market_funds_db
+    restart: always
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - DATABASE_URL
+    ports: 
+    # Map system port to container port (must be 5432 for postgres) 
+      - 5432:5432
+    volumes:
+    # Gives access
+      - db_data:/var/lib/postgresql/data
+      - ./schema.sql:/docket-entrypoint-initdb.d/schema.sql
+
+  backend:
+    build: .
+    container_name: market_funds_backend
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL
+    ports:
+      - 8000:8000
+    volumes:
+    # Give access of current working directory to work directory
+      - ./:/app
+
+volumes:
+  db_data:
