@@ -29,3 +29,5 @@ services:
     volumes:
     # Give access of current working directory to work directory
       - ./:/app
+      - /app/node_modules
+    command: npm run start
