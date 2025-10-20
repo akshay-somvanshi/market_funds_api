@@ -1,0 +1,681 @@
+{
+	"info": {
+		"name": "Fund API Tests",
+  		"description": "This collection contains test requests for the Fund Management API, including endpoints for creating, retrieving, updating, and linking investments.",
+  		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List all funds",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/funds/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"funds",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "List all funds",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/funds/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"funds",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "457"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1c9-O3rveBgCiWuyeD3VPsCby3WPVeg\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Oct 2025 14:06:13 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"eec3db63-425a-42e0-8125-e53b6b8e76c5\",\n        \"name\": \"Growth Equity Fund I\",\n        \"vintage_year\": 2019,\n        \"target_size_usd\": \"100000000.00\",\n        \"status\": \"Active\",\n        \"created_at\": \"2025-10-20T14:05:21.980Z\",\n        \"updated_at\": \"2025-10-20T14:05:21.980Z\"\n    },\n    {\n        \"id\": \"50b7ce32-4168-4956-9879-fb1d86c8ea25\",\n        \"name\": \"Infrastructure Fund II\",\n        \"vintage_year\": 2021,\n        \"target_size_usd\": \"250000000.00\",\n        \"status\": \"Closed\",\n        \"created_at\": \"2025-10-20T14:05:21.980Z\",\n        \"updated_at\": \"2025-10-20T14:05:21.980Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get a specific fund",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/funds/39b10217-6106-4437-b12d-f8b553359c12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"funds",
+						"39b10217-6106-4437-b12d-f8b553359c12"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a specific fund",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/funds/eec3db63-425a-42e0-8125-e53b6b8e76c5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"funds",
+								"eec3db63-425a-42e0-8125-e53b6b8e76c5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "226"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"e2-SuzPnZDcgvEDeP2RMwQV5ecImLE\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Oct 2025 14:16:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"eec3db63-425a-42e0-8125-e53b6b8e76c5\",\n    \"name\": \"Growth Equity Fund I\",\n    \"vintage_year\": 2019,\n    \"target_size_usd\": \"100000000.00\",\n    \"status\": \"Active\",\n    \"created_at\": \"2025-10-20T14:05:21.980Z\",\n    \"updated_at\": \"2025-10-20T14:05:21.980Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create a new fund",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Titanbay Growth Fund II\",\r\n  \"vintage_year\": 2025,\r\n  \"target_size_usd\": 500000000.00,\r\n  \"status\": \"Fundraising\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/funds/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"funds",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create a new fund",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Titanbay Growth Fund II\",\r\n  \"vintage_year\": 2025,\r\n  \"target_size_usd\": 500000000.00,\r\n  \"status\": \"Fundraising\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/funds/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"funds",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "234"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ea-x9zfdfjMo5mTxxQpyFb0Piytj5A\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Oct 2025 14:06:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"ce6a5e14-a95e-41db-99f2-b40912e6ed19\",\n    \"name\": \"Titanbay Growth Fund II\",\n    \"vintage_year\": 2025,\n    \"target_size_usd\": \"500000000.00\",\n    \"status\": \"Fundraising\",\n    \"created_at\": \"2025-10-20T14:06:33.114Z\",\n    \"updated_at\": \"2025-10-20T14:06:33.114Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "List all investors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/investors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"investors"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "List all investors",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/investors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"investors"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "333"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"14d-rp/UklZaeDPYEeTU/XfsxrEIcXA\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Oct 2025 14:06:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"4a5dfe8c-6d24-4976-b38c-392159f70857\",\n        \"name\": \"Alice Capital\",\n        \"investor_type\": \"Institutional\",\n        \"email\": \"alice@example.com\",\n        \"created_at\": \"2025-10-20T14:05:21.994Z\"\n    },\n    {\n        \"id\": \"ab59a873-58d5-4881-a2cb-a8e941eb07c0\",\n        \"name\": \"Bob Ventures\",\n        \"investor_type\": \"Individual\",\n        \"email\": \"bob@example.com\",\n        \"created_at\": \"2025-10-20T14:05:21.994Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Create a new investor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"CalPERS\",\r\n  \"investor_type\": \"Institution\",\r\n  \"email\": \"privateequity@calpers.ca.gov\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/investors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"investors"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create a new investor",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"CalPERS\",\r\n  \"investor_type\": \"Institution\",\r\n  \"email\": \"privateequity@calpers.ca.gov\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/investors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"investors"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "171"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ab-bj3BIJN7LYDea5ka1PnQoeKR158\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Oct 2025 14:06:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"d52cc7f6-e2e9-4290-a8c1-5fc78d7406b8\",\n    \"name\": \"CalPERS\",\n    \"investor_type\": \"Institution\",\n    \"email\": \"privateequity@calpers.ca.gov\",\n    \"created_at\": \"2025-10-20T14:06:57.553Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "List all investments for a specific fund",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/funds/39b10217-6106-4437-b12d-f8b553359c12/investments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"funds",
+						"39b10217-6106-4437-b12d-f8b553359c12",
+						"investments"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "List all investments for a specific fund",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/funds/eec3db63-425a-42e0-8125-e53b6b8e76c5/investments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"funds",
+								"eec3db63-425a-42e0-8125-e53b6b8e76c5",
+								"investments"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "439"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1b7-UxfOOXgdcKoN1Fj4eyNmnPgdV68\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Oct 2025 14:17:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"fbf34a51-a002-4fb4-88c8-9cc5dfb114c4\",\n        \"investor_id\": \"4a5dfe8c-6d24-4976-b38c-392159f70857\",\n        \"fund_id\": \"eec3db63-425a-42e0-8125-e53b6b8e76c5\",\n        \"amount_usd\": \"500000.00\",\n        \"investment_date\": \"2025-10-20T14:05:22.007Z\"\n    },\n    {\n        \"id\": \"35810657-c801-4402-813f-de108e979b69\",\n        \"investor_id\": \"4a5dfe8c-6d24-4976-b38c-392159f70857\",\n        \"fund_id\": \"eec3db63-425a-42e0-8125-e53b6b8e76c5\",\n        \"amount_usd\": \"75000000.00\",\n        \"investment_date\": \"2024-09-22T00:00:00.000Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Create a new investment to a fund",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"investor_id\": \"c6a2177b-29ac-4ce7-8a66-ed84f6b2429c\",\r\n  \"amount_usd\": 75000000.00,\r\n  \"investment_date\": \"2024-09-22\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/funds/39b10217-6106-4437-b12d-f8b553359c12/investments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"funds",
+						"39b10217-6106-4437-b12d-f8b553359c12",
+						"investments"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create a new investment to a fund",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"investor_id\": \"ab59a873-58d5-4881-a2cb-a8e941eb07c0\",\r\n  \"amount_usd\": 75000000.00,\r\n  \"investment_date\": \"2024-09-22\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/funds/50b7ce32-4168-4956-9879-fb1d86c8ea25/investments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"funds",
+								"50b7ce32-4168-4956-9879-fb1d86c8ea25",
+								"investments"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "219"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"db-xdIP6F8nG7qjXuD36mP3wjKyVqg\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Oct 2025 14:18:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"a44880d5-96dc-4315-a37d-3cb057d484f2\",\n    \"investor_id\": \"ab59a873-58d5-4881-a2cb-a8e941eb07c0\",\n    \"fund_id\": \"50b7ce32-4168-4956-9879-fb1d86c8ea25\",\n    \"amount_usd\": \"75000000.00\",\n    \"investment_date\": \"2024-09-22T00:00:00.000Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update an existing fund",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"ce6a5e14-a95e-41db-99f2-b40912e6ed19\",\r\n  \"name\": \"Titanbay Growth Fund I\",\r\n  \"vintage_year\": 2021,\r\n  \"target_size_usd\": 300000000.00,\r\n  \"status\": \"Investing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/funds/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"funds",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update an existing fund",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"eec3db63-425a-42e0-8125-e53b6b8e76c5\",\r\n  \"name\": \"Titanbay Growth Fund I\",\r\n  \"vintage_year\": 2021,\r\n  \"target_size_usd\": 300000000.00,\r\n  \"status\": \"Investing\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/funds/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"funds",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "231"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"e7-UvJGlz834x4fhz3C9KI0haGC1Wc\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Oct 2025 14:19:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"eec3db63-425a-42e0-8125-e53b6b8e76c5\",\n    \"name\": \"Titanbay Growth Fund I\",\n    \"vintage_year\": 2021,\n    \"target_size_usd\": \"300000000.00\",\n    \"status\": \"Investing\",\n    \"created_at\": \"2025-10-20T14:05:21.980Z\",\n    \"updated_at\": \"2025-10-20T14:19:05.043Z\"\n}"
+				}
+			]
+		}
+	]
+}

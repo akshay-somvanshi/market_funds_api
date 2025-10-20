@@ -4,7 +4,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 -- Create the Funds table 
 CREATE TABLE funds (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    name VARCHAR(255),
+    name VARCHAR(255) NOT NULL,
     vintage_year int, 
     target_size_usd NUMERIC(15,2), -- 15 digits with rounding to 2 digits after decimal
     status VARCHAR(255),
@@ -15,9 +15,9 @@ CREATE TABLE funds (
 -- Create the Investors table 
 CREATE TABLE investors (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    name VARCHAR(255),
+    name VARCHAR(255) NOT NULL,
     investor_type VARCHAR(255),
-    email VARCHAR(255) UNIQUE,
+    email VARCHAR(255) UNIQUE NOT NULL,
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
