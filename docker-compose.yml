@@ -25,7 +25,7 @@ services:
     environment:
       - DATABASE_URL
     ports:
-      - "8000:8000"
+      - "5000:5000"
     volumes:
     # Give access of current working directory to work directory
       - ./:/app
