@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import pkg from "pg";
 import fundRouter from "./routes/fund.js"
+import investorRouter from "./routes/investor.js"
 
 // Use the env file
 dotenv.config();
@@ -28,6 +29,7 @@ app.get("/health", async(req, res) => {
 });
 
 app.use("/funds", fundRouter);
+app.use("/investors", investorRouter)
 
 // Default 404 error
 app.use((req, res) => {
