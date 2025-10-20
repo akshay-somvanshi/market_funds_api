@@ -30,7 +30,10 @@ git clone https://github.com/akshay-somvanshi/market_funds_api.git
 cd market_funds_api
 ```
 
-### 2. Copy the .env file
+### 2. Copy the .env.example file
+```bash
+cp .env.example .env
+```
 
 ### 3. Build using docker
 ```bash
