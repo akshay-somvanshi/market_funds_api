@@ -2,6 +2,7 @@ import express from "express";
 import {pool} from "../app.js"
 import { createFund, getAllFunds, getSpecificFund, updateFund } from "../controllers/fundController.js";
 import { createInvestment, getInvestments } from "../controllers/investmentController.js";
+import { getFundAnalytics } from "../controllers/analyticsController.js";
 
 const router = express.Router();
 
@@ -12,6 +13,9 @@ router.get("/", getAllFunds);
 
 // GET /funds/{id} - Get a specific fund
 router.get("/:id", getSpecificFund); 
+
+// GET /funds/{fund_id}/analytics - Get analytics for a specific fund
+router.get("/:id/analytics", getFundAnalytics);
 
 // GET /funds/{fund_id}/investments - List all investments for a specific fund
 router.get("/:id/investments", getInvestments);
